@@ -1,0 +1,108 @@
+# Python
+__pycache__/
+*.pyc
+
+Nano_sign/signs.v5i.yolov8/
+Nano_sign/yolodark/
+
+# Virtual environments
+
+nanoenv/
+venv/
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# =====================
+# Virtual Environments
+# =====================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+nanoenv/
+nanoenv_gpu/
+deployenv/
+
+# =====================
+# Packaging / Build
+# =====================
+build/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# =====================
+# Logs & Outputs
+# =====================
+*.log
+*.log.json
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =====================
+# Testing / Coverage
+# =====================
+htmlcov/
+.tox/
+.coverage*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# =====================
+# ML / Training Outputs
+# =====================
+workspace/
+workdirs/
+work_dirs/
+*.pth
+*.ckpt
+*.pkl
+*.pkl.json
+events.out.tfevents.*
+
+# =====================
+# Jupyter
+# =====================
+.ipynb_checkpoints/
+
+# =====================
+# Docs
+# =====================
+docs/_build/
+site/
+
+# =====================
+# IDE / OS
+# =====================
+.vscode/
+.idea/
+.DS_Store
+
+# =====================
+# Misc
+# =====================
+*.py~
+*.sh~

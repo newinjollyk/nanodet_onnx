@@ -1,0 +1,10 @@
+'''
+/home/newin/Projects/nanodet_sign/nanodet/tools/export_onnx.py
+
+python /home/newin/Projects/nanodet_sign/nanodet/tools/export_onnx.py \
+  --cfg /home/newin/Projects/nanodet_sign/workspace/traffic_sign/logs-2026-01-23-23-13-43/train_cfg.yml \
+  --model /home/newin/Projects/nanodet_sign/workspace/traffic_sign/model_best/nanodet_model_best.pth \
+  --out /home/newin/Projects/nanodet_sign/onnx_formats/nanodet_decoded.onnx \
+  --input_shape 416,416
+
+'''
