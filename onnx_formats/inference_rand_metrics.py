@@ -83,7 +83,7 @@ def decode_nanodet(pred):
     boxes_all, scores_all, labels_all = [], [], []
     offset = 0
 
-    TOP_K = 200  # 🔴 global cap per feature level
+    TOP_K = 50# 🔴 global cap per feature level
 
     for stride in STRIDES:
         feat = INPUT_SIZE // stride

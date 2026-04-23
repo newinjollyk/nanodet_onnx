@@ -9,12 +9,11 @@ import numpy as np
 import onnxruntime as ort
 
 # ================= CONFIG =================
-
-# for FP32 model onnx
-ONNX_PATH = "/home/newin/Projects/nanodet_sign/onnx_formats/nanodet_decoded.onnx"
+#for INT8 model onnx
+ONNX_PATH = "/home/newin/Projects/nanodet_sign/onnx_formats/nanodet_decoded_static_int8.onnx"
 TEST_FOLDER = "/home/newin/Projects/nanodet_sign/Nano_sign/yolodark_nano_dataset/test/images"
-OUTPUT_DIR = "/home/newin/Projects/nanodet_sign/onnx_formats/predicted_out"
-CSV_PATH = "/home/newin/Projects/nanodet_sign/onnx_formats/predicted_out/benchmark.csv"
+OUTPUT_DIR = "/home/newin/Projects/nanodet_sign/onnx_formats/int8_outs"
+CSV_PATH = "/home/newin/Projects/nanodet_sign/onnx_formats/int8_outs/benchmark_int8.csv"
 
 INPUT_SIZE = 416
 NUM_CLASSES = 21
@@ -197,7 +196,22 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     process = psutil.Process(os.getpid())
-    session = ort.InferenceSession(ONNX_PATH, providers=["CPUExecutionProvider"])
+    
+    #session = ort.InferenceSession(ONNX_PATH, providers=["CPUExecutionProvider"])
+
+    # 🔴 CREATE SESSION HERE (ONLY ONCE)
+    sess_opts = ort.SessionOptions()
+    sess_opts.intra_op_num_threads = 4
+    sess_opts.inter_op_num_threads = 1
+    sess_opts.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+
+    session = ort.InferenceSession(
+        ONNX_PATH,
+        sess_options=sess_opts,
+        providers=["CPUExecutionProvider"]
+    )
+
+
     model_size_mb = os.path.getsize(ONNX_PATH) / (1024*1024)
 
     images = get_random_images(TEST_FOLDER, NUM_IMAGES)
